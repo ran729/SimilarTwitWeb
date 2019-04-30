@@ -1,0 +1,11 @@
+.vs/
+obj/
+bin/
+*.suo
+*.user
+packages
+*/.DS_Store
+.DS_Store
+*/environmentSettings.json
+Muzac.Api/Logs
+Muzac.Api/Files

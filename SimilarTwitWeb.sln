@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimilarTwitWeb.Api", "SimilarTwitWeb.Api\SimilarTwitWeb.Api.csproj", "{E4858572-B4AF-4128-9D78-791D35C4D0CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimilarTwitWeb.Core", "SimilarTwitWeb.Core\SimilarTwitWeb.Core.csproj", "{00576E5A-A43E-4D5A-990E-9E06111725BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4858572-B4AF-4128-9D78-791D35C4D0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4858572-B4AF-4128-9D78-791D35C4D0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4858572-B4AF-4128-9D78-791D35C4D0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4858572-B4AF-4128-9D78-791D35C4D0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00576E5A-A43E-4D5A-990E-9E06111725BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00576E5A-A43E-4D5A-990E-9E06111725BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00576E5A-A43E-4D5A-990E-9E06111725BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00576E5A-A43E-4D5A-990E-9E06111725BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
