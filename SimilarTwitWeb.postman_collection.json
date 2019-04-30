@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "754037c0-4376-4433-a52c-54573f14b752",
+		"name": "SimilarTwitWeb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Followers",
+			"item": [
+				{
+					"name": "Follow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FollowingUserId\": 1,\n\t\"FollowedUserId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/followers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"followers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FollowingUserId\": 1,\n\t\"FollowedUserId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/followers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"followers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"ran\""
+						},
+						"url": {
+							"raw": "{{host}}/api/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feed",
+			"item": [
+				{
+					"name": "Get Personal Feed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/feed/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Global Feed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/feed/global",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"global"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Post Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\": 1,\n\t\"MessageText\": \"hey there\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/message",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
