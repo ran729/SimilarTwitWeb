@@ -23,9 +23,11 @@ namespace SimilarTwitWeb.Core.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasKey(p => p.Id);
-            modelBuilder.Entity<Follower>().HasKey(p => p.Id);
-            modelBuilder.Entity<Message>().HasKey(p => p.Id);
+            modelBuilder.Entity<User>().HasKey(u => u.Id);
+            modelBuilder.Entity<Follower>().HasKey(f => f.Id);
+            modelBuilder.Entity<Follower>().HasIndex(f => new { f.FollowedUserId, f.FollowingUserId }).IsUnique();
+            modelBuilder.Entity<Message>().HasKey(m => m.Id);
+            modelBuilder.Entity<Message>().HasIndex(m => m.UserId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace SimilarTwitWeb.Core.Objects
+﻿namespace SimilarTwitWeb.Core.Objects
 {
     public struct MessageFilter
     {
         public int? UserId { get; set; }
-        public DateTime? MinCreationDate { get; set; }
+        public int? Size { get; set; }
+        public int? Offset { get; set; }
+
     }
 }

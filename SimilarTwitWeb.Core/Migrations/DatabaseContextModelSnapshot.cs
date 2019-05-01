@@ -29,6 +29,9 @@ namespace SimilarTwitWeb.Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FollowedUserId", "FollowingUserId")
+                        .IsUnique();
+
                     b.ToTable("Followers");
                 });
 

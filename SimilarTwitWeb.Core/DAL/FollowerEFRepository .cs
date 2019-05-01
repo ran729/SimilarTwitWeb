@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SimilarTwitWeb.Core.Objects;
-using Microsoft.EntityFrameworkCore;
 using SimilarTwitWeb.Core.Interfaces;
+using System.Linq;
 
 namespace SimilarTwitWeb.Core.DAL
 {
@@ -13,11 +13,12 @@ namespace SimilarTwitWeb.Core.DAL
 
         public async Task DeleteFollower(Follower follower)
         {
-            await _dbContext.Database.ExecuteSqlCommandAsync(
-                $@"delete from Followers 
-                where FollowingUserId = {follower.FollowingUserId}
-                and FollowedUserId = {follower.FollowedUserId}
-            ");
+            _dbContext.Followers.RemoveRange(
+                _dbContext.Followers.Where(f => f.FollowedUserId == follower.FollowedUserId &&
+                                                f.FollowingUserId == follower.FollowingUserId)
+            );
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

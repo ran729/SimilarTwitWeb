@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SimilarTwitWeb.Core.Exceptions;
 using SimilarTwitWeb.Core.Interfaces;
 using SimilarTwitWeb.Core.Objects;
 
@@ -21,15 +22,23 @@ namespace SimilarTwitWeb.Controllers
         [HttpPost]
         public async Task<ActionResult> Follow([FromBody] Follower follower)
         {
-            // assuming followingUserId users exists.
+            // assuming followingUserId user exists.
             var userExists = await _userRepository.DoesUserExist(follower.FollowedUserId);
            
             if (!userExists)
             {
-                return BadRequest($"Can't follow {follower.FollowedUserId}, user does not exist.");
+                return BadRequest($"Can't follow user#{follower.FollowedUserId}, user does not exist.");
             }
 
-            await _followersRepository.AddAsync(follower);
+            try
+            {
+                await _followersRepository.AddAsync(follower);
+            }
+            catch(UniqueRowAlreadyExistsException)
+            {
+                return BadRequest($"user#{follower.FollowingUserId} already follows user#{follower.FollowedUserId}");
+            }
+
             return Ok();
         }
 

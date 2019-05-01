@@ -9,7 +9,7 @@ using SimilarTwitWeb.Core.DAL;
 namespace SimilarTwitWeb.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190430191640_InitialCreate")]
+    [Migration("20190501095031_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace SimilarTwitWeb.Core.Migrations
                     b.Property<int>("FollowingUserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FollowedUserId", "FollowingUserId")
+                        .IsUnique();
 
                     b.ToTable("Followers");
                 });

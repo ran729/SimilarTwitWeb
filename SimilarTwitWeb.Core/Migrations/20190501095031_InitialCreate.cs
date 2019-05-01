@@ -58,6 +58,12 @@ namespace SimilarTwitWeb.Core.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Followers_FollowedUserId_FollowingUserId",
+                table: "Followers",
+                columns: new[] { "FollowedUserId", "FollowingUserId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserId",
                 table: "Messages",
                 column: "UserId");
