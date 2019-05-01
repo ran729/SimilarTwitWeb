@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"FollowingUserId\": 1,\n\t\"FollowedUserId\": 2\n}"
+							"raw": "{\n\t\"FollowingUserId\": 2,\n\t\"FollowedUserId\": 3\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/followers",
@@ -51,7 +51,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"FollowingUserId\": 1,\n\t\"FollowedUserId\": 2\n}"
+							"raw": "{\n\t\"FollowingUserId\": 2,\n\t\"FollowedUserId\": 3\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/followers",
@@ -115,14 +115,24 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/api/feed/1",
+							"raw": "{{host}}/api/feed/2?offset=0&size=10",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"feed",
-								"1"
+								"2"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -170,7 +180,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"UserId\": 1,\n\t\"MessageText\": \"hey there\"\n}"
+							"raw": "{\n\t\"UserId\": 1,\n\t\"MessageText\": \"message\"\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/message",

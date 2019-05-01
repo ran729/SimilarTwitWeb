@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Objects\" />
     <Folder Include="DAL\" />
-    <Folder Include="BL\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
