@@ -6,7 +6,9 @@ Server - TODO
 
 **Follow -** 
 [POST] {{host}}/api/followers
+
 BODY :
+
 {
 	"FollowingUserId": 2,
 	"FollowedUserId": 1
@@ -14,12 +16,16 @@ BODY :
 
 **CreateUser -**
 [POST] {{host}}/api/users
+
 BODY: 
+
 "ran"
 
 **PostMessage -**
 [POST] {{host}}/api/message
+
 BODY: 
+
 {
 	"UserId": 2,
 	"MessageText": "testing"
@@ -27,7 +33,9 @@ BODY:
 
 **Unfollow -**
 [DELETE] {{host}}/api/followers
+
 BODY :
+
 {
 	"FollowingUserId": 2,
 	"FollowedUserId": 1
