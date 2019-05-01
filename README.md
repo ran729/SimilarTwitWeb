@@ -49,7 +49,7 @@ BODY :
 [GET] {{host}}/api/feed/global?offset={optional}&size={optional}
 
 
-# Architecture 
+# Implementation Notes 
 
 **Technologies:** .NET CORE 2, C#, SQLITE, ENTITY FRAMEWORK, DOCKER, AWS EC2, GITHUB
 
