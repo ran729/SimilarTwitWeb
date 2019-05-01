@@ -3,6 +3,7 @@
 Server - TODO
 
 ## Endpoints 
+the repository contains also a postman collection file in the root folder (SimilarTwitWeb.postman_collection.json).
 
 **Follow -** 
 [POST] {{host}}/api/followers
