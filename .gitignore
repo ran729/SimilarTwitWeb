@@ -6,6 +6,3 @@ bin/
 packages
 */.DS_Store
 .DS_Store
-*/environmentSettings.json
-Muzac.Api/Logs
-Muzac.Api/Files
