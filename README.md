@@ -1,6 +1,6 @@
 # SimilarTwitWeb
 
-Server - TODO
+Server - http://18.197.92.28
 
 ## Endpoints 
 the repository contains also a postman collection file in the root folder (SimilarTwitWeb.postman_collection.json).
