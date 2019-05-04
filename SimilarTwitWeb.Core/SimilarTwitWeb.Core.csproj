@@ -15,6 +15,7 @@
     <Folder Include="DAL\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="BL\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.2" />

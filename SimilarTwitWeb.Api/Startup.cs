@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SimilarTwitWeb.Core.DAL;
 using Microsoft.EntityFrameworkCore;
 using SimilarTwitWeb.Core.Interfaces;
+using SimilarTwitWeb.Core.BL;
 
 namespace SimilarTwitWeb
 {
@@ -29,12 +30,17 @@ namespace SimilarTwitWeb
             services.AddTransient<IUserRepository, UserEFRepository>();
             services.AddTransient<IMessageRepository, MessageEFRepository>();
             services.AddTransient<IFollowerRepository, FollowerEFRepository>();
+            services.AddTransient<IFeedManager, FeedManager>();
+            services.AddTransient<IFollowersManager, FollowersManager>();
+            services.AddSingleton<InMemoryStorage>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             app.UseMvc();
+
         }
     }
 }

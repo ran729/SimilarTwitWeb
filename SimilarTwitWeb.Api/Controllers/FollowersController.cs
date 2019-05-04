@@ -10,12 +10,12 @@ namespace SimilarTwitWeb.Controllers
     [ApiController]
     public class FollowersController : ControllerBase
     {
-        private readonly IFollowerRepository _followersRepository;
+        private readonly IFollowersManager _followersManager;
         private readonly IUserRepository _userRepository;
 
-        public FollowersController(IFollowerRepository followersRepository, IUserRepository userRepository)
+        public FollowersController(IFollowersManager followersManager, IUserRepository userRepository)
         {
-            _followersRepository = followersRepository;
+            _followersManager = followersManager;
             _userRepository = userRepository;
         }
 
@@ -32,7 +32,7 @@ namespace SimilarTwitWeb.Controllers
 
             try
             {
-                await _followersRepository.AddAsync(follower);
+                await _followersManager.Follow(follower);
             }
             catch(UniqueRowAlreadyExistsException)
             {
@@ -45,7 +45,7 @@ namespace SimilarTwitWeb.Controllers
         [HttpDelete]
         public async Task<ActionResult> Unfollow([FromBody] Follower follower)
         {
-            await _followersRepository.DeleteFollower(follower);
+            await _followersManager.Unfollow(follower);
             return Ok(); 
         } 
     }

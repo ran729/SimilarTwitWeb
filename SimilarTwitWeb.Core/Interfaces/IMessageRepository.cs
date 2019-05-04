@@ -8,5 +8,6 @@ namespace SimilarTwitWeb.Core.Interfaces
     {
         Task<Message> AddAsync(Message entity);
         List<Message> GetFeed(MessageFilter filter = new MessageFilter());
+        List<Message> GetLatestMessages(int followedUserId, int mAX_FEED_SIZE);
     }
 }

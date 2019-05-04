@@ -47,7 +47,18 @@ namespace SimilarTwitWeb.Core.DAL
                 query = query.Take(filter.Size.Value);
             }
 
-            return query.ToList(); ;
+            return query.ToList().OrderBy(o => o.CreatedAt).ToList();
+        }
+
+        public List<Message> GetLatestMessages(int userId, int feedSize)
+        {
+            return _dbContext.Messages.Include("User")
+                .Where(o=>o.UserId == userId)
+                .OrderByDescending(o=>o.CreatedAt)
+                .Take(feedSize)
+                .ToList()
+                .OrderBy(o=>o.CreatedAt).ToList();
+
         }
     }
 }

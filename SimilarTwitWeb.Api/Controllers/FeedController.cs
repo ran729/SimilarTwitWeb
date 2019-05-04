@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimilarTwitWeb.Api.ApiObjects;
+using SimilarTwitWeb.Core.BL;
 using SimilarTwitWeb.Core.Interfaces;
 using SimilarTwitWeb.Core.Objects;
 
@@ -13,20 +14,19 @@ namespace SimilarTwitWeb.Controllers
     [ApiController]
     public class FeedController : ControllerBase
     {
-        private IMessageRepository _messageRepository;
+        private IFeedManager _feedManager;
         private IUserRepository _userRepository;
 
-        public FeedController(IMessageRepository messageRepository, IUserRepository userRepository)
+        public FeedController(IFeedManager feedManager, IUserRepository userRepository)
         {
-            _messageRepository = messageRepository;
+            _feedManager = feedManager;
             _userRepository = userRepository;
         }
 
         [HttpGet("global")]
-        public IEnumerable<ApiFeedItem> GetGlobalFeed([FromQuery]int? size = null, [FromQuery]int? offset = null)
+        public IEnumerable<ApiFeedItem> GetGlobalFeed()
         {
-            var filter = new MessageFilter { Size = size, Offset = offset };
-            return _messageRepository.GetFeed(filter).Select(msg => new ApiFeedItem(msg));
+            return _feedManager.GetFeed().Select(msg => new ApiFeedItem(msg));
         }
 
         [HttpGet("{userId}")]
@@ -39,8 +39,7 @@ namespace SimilarTwitWeb.Controllers
                 return BadRequest($"Can't show feed of user#{userId}, user does not exist.");
             }
 
-            var filter = new MessageFilter { UserId = userId, Size = size, Offset = offset };
-            var feed = _messageRepository.GetFeed(filter).Select(msg => new ApiFeedItem(msg));
+            var feed = _feedManager.GetFeed(userId).Select(msg => new ApiFeedItem(msg));
             return Ok(feed);
         }
     }

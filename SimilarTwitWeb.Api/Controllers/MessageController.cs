@@ -9,11 +9,11 @@ namespace SimilarTwitWeb.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly IMessageRepository _messageRepository;
+        private readonly IFeedManager _feedManager;
 
-        public MessageController(IMessageRepository messageRepository)
+        public MessageController(IFeedManager feedManager)
         {
-            _messageRepository = messageRepository;
+            _feedManager = feedManager;
         }
 
         [HttpPost]
@@ -26,7 +26,7 @@ namespace SimilarTwitWeb.Controllers
                 return BadRequest("Cannot post this message, reason: " + reason);
             }
 
-            var createdMessage = await _messageRepository.AddAsync(message);
+            var createdMessage = await _feedManager.IndexMessage(message);
             return Ok(createdMessage);
         }
 
