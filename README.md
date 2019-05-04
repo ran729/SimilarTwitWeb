@@ -43,10 +43,10 @@ BODY :
 }
 
 **GetFeed -**
-[GET] {{host}}/api/feed/{userId}?offset={optional}&size={optional}
+[GET] {{host}}/api/feed/{userId}
 
 **GetGlobalFeed -**
-[GET] {{host}}/api/feed/global?offset={optional}&size={optional}
+[GET] {{host}}/api/feed/global
 
 
 # Implementation Notes 
@@ -73,6 +73,22 @@ SimilarTwitWeb.Core -
 
 This project is responsible to do the core logic of our app.
 most of the work here is DB facing, you can find it under the DAL folder, each resource has its own Repository file which provides it data access to the resource.
-Usually i add between the Controller layer and the DAL layer another Business Logic layer but since we have so little logic here besides DB calls i have decided to not create this layer here.
 also i will usually not expose DB Objects in the api and instead use convertors from DB objects to API objects to prevent exposure of unnecessary data.
+
+**Feed Architecture:** 
+
+The general idea - 
+
+A new message is posted to the api, the api saves it to the db, then an offline processor processes the new message and adds it to a data structure of feeds of all the posting user's followers, this data is saved in some shared-memory db cluster like Redis.
+When Celebrities post a message ( celebrities are defined as users with more than 5K followers), their messages are saved on the shared memory too but not indexed on all of the followers feeds, since there are too many we dont want to update all the followers feeds.
+when a user requests his feed, we query his feed from the Redis queue, and then add to it the latest messages of the celebrities he is following.
+in-memory Feeds are saved only to users who are active in the last 15 days.
+
+Actual implementation -
+
+instead of Redis i did this in-memory.
+instead of offline processing of the feed i have processed the feed upon receiving a new message from the api.
+didnt implement a system to remove old feeds of inactive users.
+
+
 
